@@ -161,9 +161,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 formStatus.classList.add('is-visible');
             }
 
-            const openedWindow = window.open(whatsappUrl, '_blank', 'noopener');
+            const openedWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
             if (!openedWindow) {
-                window.location.href = whatsappUrl;
+                const fallback = document.createElement('a');
+                fallback.href = whatsappUrl;
+                fallback.target = '_blank';
+                fallback.rel = 'noopener noreferrer';
+                document.body.appendChild(fallback);
+                fallback.click();
+                document.body.removeChild(fallback);
             }
 
             window.setTimeout(() => {
