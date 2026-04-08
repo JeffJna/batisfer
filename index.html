@@ -9,7 +9,8 @@
         content="A BATISFER fornece ferro e aço sob medida com corte, dobra e furação em padrão industrial. Solicite sua cotação com atendimento técnico e comercial ágil.">
     <link rel="icon" type="image/png" href="imagens/propostaLogo_transparente.png">
     <meta property="og:title" content="BATISFER | Ferro e aço sob medida com precisão industrial">
-    <meta property="og:description" content="A BATISFER fornece ferro e aço sob medida com corte, dobra e furação em padrão industrial. Solicite sua cotação com atendimento técnico e comercial ágil.">
+    <meta property="og:description"
+        content="A BATISFER fornece ferro e aço sob medida com corte, dobra e furação em padrão industrial. Solicite sua cotação com atendimento técnico e comercial ágil.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jeffjna.github.io/batisfer/">
     <meta property="og:image" content="https://jeffjna.github.io/batisfer/imagens/propostaLogo_transparente.png">
@@ -49,6 +50,12 @@
 </head>
 
 <body>
+    <div class="preloader">
+        <div class="preloader-inner">
+            <img src="imagens/propostaLogo_transparente.png" alt="BATISFER" class="preloader-logo">
+            <div class="preloader-bar"></div>
+        </div>
+    </div>
     <header class="navbar">
         <div class="container nav-content">
             <a href="#home" class="logo" aria-label="BATISFER">
@@ -63,7 +70,8 @@
                 <a href="#sobre">Empresa</a>
                 <a href="#contato" class="btn-primary-outline">Pedir cotação</a>
             </nav>
-            <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-controls="site-navigation" aria-expanded="false">
+            <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-controls="site-navigation"
+                aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -133,7 +141,9 @@
                     <h2 class="section-title">Uma operação pensada para transmitir solidez antes mesmo do primeiro
                         pedido.</h2>
                     <div class="accent-line"></div>
-                    <p class="section-desc">Uma operação construída ao longo de mais de 15 anos, com equipamento CNC, leitura técnica do projeto e foco em precisão dimensional para quem não pode depender de soluções improvisadas.</p>
+                    <p class="section-desc">Uma operação construída ao longo de mais de 15 anos, com equipamento CNC,
+                        leitura técnica do projeto e foco em precisão dimensional para quem não pode depender de
+                        soluções improvisadas.</p>
                 </div>
                 <div class="diff-grid">
                     <article class="diff-card" data-reveal>
@@ -176,7 +186,8 @@
                     <h2 class="section-title">Produtos com apresentação de linha robusta, prontos para virar cotação.
                     </h2>
                     <div class="accent-line"></div>
-                    <p class="section-desc">Do produto em estoque ao blank sob medida: portfólio completo para atender diferentes etapas da sua cadeia produtiva com agilidade e rastreabilidade técnica.</p>
+                    <p class="section-desc">Do produto em estoque ao blank sob medida: portfólio completo para atender
+                        diferentes etapas da sua cadeia produtiva com agilidade e rastreabilidade técnica.</p>
                 </div>
 
                 <div class="prod-grid">
@@ -350,7 +361,9 @@
                     <h2 class="section-title">Serviços industriais com leitura técnica, badges de capacidade e linguagem
                         de produção real.</h2>
                     <div class="accent-line"></div>
-                    <p class="section-desc">Corte, dobra e furação executados com equipamento CNC e capacidade de 90 toneladas, orientados por medidas e desenho técnico para garantir padrão repetível em lotes industriais.</p>
+                    <p class="section-desc">Corte, dobra e furação executados com equipamento CNC e capacidade de 90
+                        toneladas, orientados por medidas e desenho técnico para garantir padrão repetível em lotes
+                        industriais.</p>
                 </div>
 
                 <div class="servicos-layout">
@@ -452,6 +465,45 @@
             </div>
         </section>
 
+        <section id="calculadora" class="calculadora">
+            <div class="container">
+                <div class="calc-panel" data-reveal>
+                    <div class="calc-intro">
+                        <span class="calc-badge">Ferramenta Rápida</span>
+                        <h3>Calculadora de Peso Teórico (Aço)</h3>
+                        <p>Estime rapidamente o peso da matéria-prima (chapas) para o seu lote, facilitando o dimensionamento logístico e financeiro.</p>
+                    </div>
+                    
+                    <div class="calc-form">
+                        <div class="calc-inputs">
+                            <div class="calc-group">
+                                <label for="calc-espessura">Espessura (mm)</label>
+                                <input type="number" id="calc-espessura" placeholder="Ex: 6.35" step="0.01">
+                            </div>
+                            <div class="calc-group">
+                                <label for="calc-largura">Largura (mm)</label>
+                                <input type="number" id="calc-largura" placeholder="Ex: 1200">
+                            </div>
+                            <div class="calc-group">
+                                <label for="calc-comprimento">Comprimento (mm)</label>
+                                <input type="number" id="calc-comprimento" placeholder="Ex: 3000">
+                            </div>
+                            <div class="calc-group">
+                                <label for="calc-qte">Quantidade</label>
+                                <input type="number" id="calc-qte" placeholder="Ex: 1" value="1" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="calc-result">
+                            <span class="result-label">Peso Teórico Estimado</span>
+                            <strong class="result-value" id="calc-resultado">0,00 <small>kg</small></strong>
+                            <p class="result-obs">*Estimativa para aço carbono padrão (peso específico ~7,85 g/cm³)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="sobre" class="sobre">
             <div class="container sobre-container">
                 <div class="sobre-text" data-reveal>
@@ -524,7 +576,8 @@
                             <div>
                                 <h4>Telefones</h4>
                                 <p><a href="tel:+551129666200" class="contact-link">(11) 2966-6200</a></p>
-                                <p><a href="tel:+5511980976575" class="contact-link">(11) 98097-6575</a> / <a href="tel:+5511997560469" class="contact-link">(11) 99756-0469</a></p>
+                                <p><a href="tel:+5511980976575" class="contact-link">(11) 98097-6575</a> / <a
+                                        href="tel:+5511997560469" class="contact-link">(11) 99756-0469</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -536,7 +589,8 @@
                             </svg>
                             <div>
                                 <h4>E-mail</h4>
-                                <p><a href="mailto:vendas@batisfer.com.br" class="contact-link">vendas@batisfer.com.br</a></p>
+                                <p><a href="mailto:vendas@batisfer.com.br"
+                                        class="contact-link">vendas@batisfer.com.br</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -547,7 +601,9 @@
                             </svg>
                             <div>
                                 <h4>Endereço</h4>
-                                <p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Almirante+Alexandrino,+440,+S%C3%A3o+Paulo,+SP,+03350-010" target="_blank" rel="noopener noreferrer" class="contact-link">Rua Almirante Alexandrino, 440<br>CEP: 03350-010 - São Paulo - SP</a></p>
+                                <p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Almirante+Alexandrino,+440,+S%C3%A3o+Paulo,+SP,+03350-010"
+                                        target="_blank" rel="noopener noreferrer" class="contact-link">Rua Almirante
+                                        Alexandrino, 440<br>CEP: 03350-010 - São Paulo - SP</a></p>
                             </div>
                         </div>
                     </div>
@@ -561,49 +617,71 @@
                             atendimento.</p>
                     </div>
                     <div class="contato-form">
-                        <form id="quoteForm" class="form">
-                            <div class="form-group">
-                                <label for="nome">Nome*</label>
-                                <input type="text" id="nome" name="nome" required class="form-control"
-                                    placeholder="Seu nome">
-                            </div>
-                            <div class="form-group">
-                                <label for="empresa">Empresa</label>
-                                <input type="text" id="empresa" name="empresa" class="form-control"
-                                    placeholder="Nome da empresa">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group half">
-                                    <label for="email">E-mail*</label>
-                                    <input type="email" id="email" name="email" required class="form-control"
-                                        placeholder="voce@empresa.com.br">
+                        <form id="quoteForm" class="form conversational-form">
+                            <!-- Step 1 -->
+                            <div class="form-step active" data-step="1">
+                                <h4 class="step-title">1. Identificação</h4>
+                                <div class="form-group">
+                                    <label for="nome">Nome*</label>
+                                    <input type="text" id="nome" name="nome" required class="form-control"
+                                        placeholder="Seu nome">
                                 </div>
-                                <div class="form-group half">
-                                    <label for="telefone">Telefone*</label>
-                                    <input type="tel" id="telefone" name="telefone" required class="form-control"
-                                        placeholder="(11) 99999-9999">
+                                <div class="form-group">
+                                    <label for="empresa">Empresa</label>
+                                    <input type="text" id="empresa" name="empresa" class="form-control"
+                                        placeholder="Nome da empresa">
+                                </div>
+                                <div class="step-actions">
+                                    <button type="button" class="btn-primary step-next" data-next="2">Avançar <span class="arrow">→</span></button>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="mensagem">Necessidade / Mensagem*</label>
-                                <textarea id="mensagem" name="mensagem" rows="5" required class="form-control"
-                                    placeholder="Descreva material, medidas, espessuras, volume e prazo desejado."></textarea>
+
+                            <!-- Step 2 -->
+                            <div class="form-step" data-step="2">
+                                <h4 class="step-title">2. Contato</h4>
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="email">E-mail*</label>
+                                        <input type="email" id="email" name="email" required class="form-control"
+                                            placeholder="voce@empresa.com.br">
+                                    </div>
+                                    <div class="form-group half">
+                                        <label for="telefone">Telefone*</label>
+                                        <input type="tel" id="telefone" name="telefone" required class="form-control"
+                                            placeholder="(11) 99999-9999">
+                                    </div>
+                                </div>
+                                <div class="step-actions">
+                                    <button type="button" class="btn-secondary step-prev" data-prev="1">Voltar</button>
+                                    <button type="button" class="btn-primary step-next" data-next="3">Avançar <span class="arrow">→</span></button>
+                                </div>
                             </div>
-                            <div class="form-group file-upload">
-                                <label for="anexo" class="file-label">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
-                                        stroke-width="2" aria-hidden="true">
-                                        <path
-                                            d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-                                    </svg>
-                                    Anexar projeto ou desenho técnico
-                                </label>
-                                <input type="file" id="anexo" name="anexo" class="file-input" accept=".pdf,.dwg,.dxf,.xls,.xlsx,.doc,.docx,.jpg,.jpeg,.png">
-                                <span id="file-name">Nenhum arquivo escolhido</span>
+
+                            <!-- Step 3 -->
+                            <div class="form-step" data-step="3">
+                                <h4 class="step-title">3. Escopo do Projeto</h4>
+                                <div class="form-group">
+                                    <label for="mensagem">Necessidade / Mensagem*</label>
+                                    <textarea id="mensagem" name="mensagem" rows="5" required class="form-control"
+                                        placeholder="Descreva material, medidas, espessuras, volume e prazo desejado."></textarea>
+                                </div>
+                                <div class="form-group file-upload" style="margin-bottom: 24px;">
+                                    <label for="anexo" class="file-label">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                                        Anexar projeto ou desenho
+                                    </label>
+                                    <input type="file" id="anexo" name="anexo" class="file-input" accept=".pdf,.dwg,.dxf,.xls,.xlsx,.doc,.docx,.jpg,.jpeg,.png">
+                                    <span id="file-name">Nenhum arquivo escolhido</span>
+                                </div>
+                                <p class="form-note">O envio abre o WhatsApp comercial com os dados preenchidos. Se houver
+                                    arquivo, o nome do documento segue na mensagem para continuidade do atendimento.</p>
+                                <p id="form-status" class="form-status" aria-live="polite"></p>
+
+                                <div class="step-actions">
+                                    <button type="button" class="btn-secondary step-prev" data-prev="2">Voltar</button>
+                                    <button type="submit" class="btn-primary">Enviar Cotação <span class="arrow">→</span></button>
+                                </div>
                             </div>
-                            <p class="form-note">O envio abre o WhatsApp comercial com os dados preenchidos. Se houver arquivo, o nome do documento segue na mensagem para continuidade do atendimento.</p>
-                            <p id="form-status" class="form-status" aria-live="polite"></p>
-                            <button type="submit" class="btn-primary btn-block">Enviar solicitação de cotação</button>
                         </form>
                     </div>
                 </div>
@@ -633,7 +711,8 @@
                 <h4>Comercial</h4>
                 <p><a href="tel:+551129666200" class="contact-link">(11) 2966-6200</a></p>
                 <p><a href="mailto:vendas@batisfer.com.br" class="contact-link">vendas@batisfer.com.br</a></p>
-                <a href="https://wa.me/5511980976575" target="_blank" rel="noopener noreferrer" class="footer-cta">Falar pelo
+                <a href="https://wa.me/5511980976575" target="_blank" rel="noopener noreferrer" class="footer-cta">Falar
+                    pelo
                     WhatsApp</a>
             </div>
         </div>
@@ -650,6 +729,15 @@
             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'">
     </a>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 
