@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens | BATISFER</title>
+    <meta name="description" content="Imagens de produtos Batisfer.">
+    <link rel="icon" type="image/png" href="imagens/propostaLogo_transparente.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .gallery-section {
+            padding: 140px 0 80px;
+            min-height: 100vh;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+        @media(min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--bg-elevated);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), border-color var(--transition);
+            height: 100%;
+        }
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(208, 17, 26, 0.55);
+        }
+        .gallery-img-wrapper {
+            position: relative;
+            padding-top: 65%;
+            overflow: hidden;
+            background: #080a0d;
+        }
+        .gallery-img-wrapper img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: saturate(0.85);
+            transition: filter var(--transition), transform 500ms ease;
+        }
+        .gallery-item:hover img {
+            filter: saturate(1.1);
+            transform: scale(1.05);
+        }
+        .gallery-content {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .prod-card-title {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .prod-card-desc {
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+        .prod-card-list {
+            list-style: none;
+            margin-bottom: 24px;
+            padding: 0;
+            flex-grow: 1;
+        }
+        .prod-card-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+        .prod-card-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .prod-card-conc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+        .gallery-btn {
+            margin-top: auto;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo" aria-label="BATISFER">
+                <img src="imagens/propostaLogo_transparente.png" alt="BATISFER"
+                    onerror="this.src=''; this.alt='BATISFER'; this.className='logo-text'">
+            </a>
+            <nav class="nav-links" id="site-navigation">
+                <a href="index.html#home">Início</a>
+                <a href="index.html#produtos">Produtos</a>
+                <a href="index.html#contato" class="btn-primary-outline">Pedir cotação</a>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-controls="site-navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-section">
+            <div class="container">
+                <a href="index.html#produtos" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Voltar aos produtos
+                </a>
+                
+                <div class="section-header">
+                    <span class="section-kicker">Galeria de Produtos</span>
+                    <h1 class="section-title gallery-title" id="galleryTitle">Carregando...</h1>
+                    <div class="accent-line"></div>
+                </div>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Imagens serão carregadas aqui via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="imagens/propostaLogo_transparente.png" alt="BATISFER" class="footer-logo">
+                <p>Ferro e aço sob medida com postura industrial, atendimento técnico e foco em conversão de cotação.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html#diferenciais">Diferenciais</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="index.html#contato">Cotação</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Comercial</h4>
+                <p><a href="tel:+551129666200" class="contact-link">(11) 2966-6200</a></p>
+                <p><a href="mailto:vendas@batisfer.com.br" class="contact-link">vendas@batisfer.com.br</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 BATISFER. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const imageDB = {
+    "blanks": [
+        {
+            "image": "blanks.avif",
+            "text": "Blanks sob medida com precisão e agilidade para sua produção\n\nOs blanks são chapas de aço cortadas conforme a necessidade do seu projeto, ideais para otimizar processos industriais e reduzir desperdícios. Na Batisfer, você recebe peças prontas para uso, com medidas exatas e qualidade consistente.\n\nCorte sob medida conforme especificação\nRedução de desperdício de material\nMais agilidade no processo produtivo\nPadronização e precisão dimensional\n\nGanhe produtividade e elimine etapas desnecessárias na sua produção. Com os blanks da Batisfer, você recebe exatamente o que precisa para produzir com eficiência e controle.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "bobinas": [
+        {
+            "image": "bobinas.avif",
+            "text": "Bobinas de Aço com versatilidade e eficiência para produção em larga escala\n\nAs bobinas de aço são ideais para processos industriais que exigem agilidade, padronização e alto volume de produção. Na Batisfer, você encontra materiais de qualidade, prontos para atender diferentes aplicações com eficiência e excelente custo-benefício.\n\nIdeal para corte, conformação e fabricação contínua\nAlta produtividade para processos industriais\nPadronização e qualidade constante\nVersatilidade para diferentes aplicações\n\nOtimize sua produção com materiais que acompanham o ritmo do seu negócio. Com as bobinas de aço da Batisfer, você garante eficiência, redução de desperdícios e desempenho consistente.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "chapas": [
+        {
+            "image": "chapafinafrio.avif",
+            "text": "Chapa Fina a Frio com precisão industrial e acabamento impecável\n\nIdeal para projetos que exigem corte preciso, excelente acabamento e máxima confiabilidade. A Batisfer oferece chapas de alta qualidade para aplicações que pedem padronização, resistência e eficiência em cada etapa da produção.\n\nSuperfície lisa e uniforme, pronta para pintura\nAlta precisão para cortes e dobras\nRedução de retrabalho no processo produtivo\nQualidade constante para diferentes aplicações industriais\n\nChega de perder tempo com material que compromete o resultado final. Com a Batisfer, você recebe chapa fina a frio com o padrão que seu projeto precisa para produzir com mais segurança, agilidade e confiança.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "chapafinaquente.avif",
+            "text": "Chapa a Quente com resistência e versatilidade para aplicações estruturais\n\nIndicada para projetos que exigem robustez, a chapa laminada a quente é ideal para aplicações industriais, estruturais e de grande escala. Na Batisfer, você encontra materiais confiáveis, prontos para atender demandas que exigem força e durabilidade.\n\nAlta resistência para aplicações estruturais\nExcelente custo-benefício para grandes volumes\nVersatilidade para corte, solda e fabricação\nIdeal para construção metálica e indústria pesada\n\nSe o seu projeto precisa de material resistente e confiável, a chapa a quente é a base certa para garantir desempenho e produtividade.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "chapagalvanizada.avif",
+            "text": "Chapa Galvanizada com proteção superior contra corrosão\n\nProjetada para ambientes que exigem durabilidade e resistência à oxidação, a chapa galvanizada é a escolha ideal para aplicações externas e industriais. Com revestimento em zinco, garante maior vida útil e desempenho mesmo em condições agressivas.\n\nAlta resistência à corrosão e oxidação\nMaior durabilidade em ambientes externos\nBaixa necessidade de manutenção\nIdeal para estruturas metálicas, telhados e fabricação industrial\n\nEvite prejuízos com ferrugem e desgaste prematuro. Com a chapa galvanizada da Batisfer, você garante proteção, qualidade e longevidade para o seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "chapagrossa.avif",
+            "text": "Chapa Grossa para aplicações de alta resistência e máxima robustez\n\nDesenvolvida para projetos que exigem força estrutural e durabilidade extrema, a chapa grossa é ideal para aplicações industriais pesadas. Na Batisfer, você encontra materiais preparados para suportar altas cargas e condições exigentes com segurança e desempenho.\n\nAlta resistência para estruturas de grande porte\nIdeal para soldagem, corte e fabricação pesada\nExcelente desempenho em ambientes industriais\nMaterial confiável para projetos que não admitem falhas\n\nQuando o seu projeto exige robustez de verdade, a escolha do material faz toda a diferença. Com a chapa grossa da Batisfer, você garante segurança, resistência e confiança do início ao fim.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "chapaoxicortada.avif",
+            "text": "Chapa Oxicortada sob medida com precisão para aplicações industriais\n\nIdeal para projetos que exigem cortes em chapas de grande espessura, a chapa oxicortada oferece precisão, eficiência e excelente custo-benefício para fabricação pesada. Na Batisfer, você recebe peças prontas conforme o seu projeto, reduzindo tempo de produção e retrabalho.\n\nCorte sob medida conforme desenho técnico\nIdeal para chapas de grande espessura\nRedução de desperdício e retrabalho\nAgilidade na fabricação e montagem\n\nPare de perder tempo com cortes imprecisos ou processos demorados. Com o oxicorte da Batisfer, você recebe peças prontas para uso, com qualidade e rapidez que seu projeto precisa.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "chapas.avif",
+            "text": "Chapas de Aço para diferentes aplicações industriais com qualidade e confiança\n\nA Batisfer oferece uma linha completa de chapas de aço para atender desde projetos leves até aplicações estruturais de alta exigência. Trabalhamos com materiais de qualidade, prontos para corte, dobra e fabricação conforme a necessidade do seu projeto.\n\nChapas finas a frio com alto acabamento e precisão\nChapas a quente para aplicações estruturais e industriais\nChapas galvanizadas com proteção contra corrosão\nChapas grossas para alta resistência e carga\nChapas oxicortadas sob medida para projetos específicos\n\nSeja qual for a sua necessidade, você encontra na Batisfer o material certo para garantir eficiência, durabilidade e desempenho no seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "chapaxadrez.avif",
+            "text": "Chapa Xadrez antiderrapante com segurança e resistência para aplicações industriais\n\nA chapa xadrez é ideal para ambientes que exigem segurança, aderência e durabilidade. Com superfície antiderrapante, é amplamente utilizada em pisos, rampas, escadas e áreas de circulação, garantindo maior estabilidade e proteção.\n\nSuperfície antiderrapante para mais segurança\nAlta resistência ao desgaste e impacto\nIdeal para pisos industriais, rampas e escadas\nDurabilidade mesmo em ambientes exigentes\n\nReduza riscos de acidentes e aumente a segurança do seu projeto com materiais confiáveis. Com a chapa xadrez da Batisfer, você garante resistência, funcionalidade e desempenho no dia a dia.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "laminados": [
+        {
+            "image": "barraquadrada.avif",
+            "text": "Barra Quadrada de aço com resistência e versatilidade para múltiplas aplicações\n\nA barra quadrada é ideal para projetos que exigem resistência estrutural e facilidade de usinagem. Amplamente utilizada na indústria e serralheria, oferece excelente desempenho em diferentes aplicações.\n\nAlta resistência mecânica\nIdeal para estruturas metálicas e fabricação\nFacilidade de corte, solda e usinagem\nVersatilidade para diversos projetos\n\nGaranta qualidade e desempenho com materiais confiáveis para o seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "barraredonda.avif",
+            "text": "Barra Redonda de aço com alta resistência e excelente usinabilidade\n\nIndicada para aplicações que exigem precisão e resistência, a barra redonda é amplamente utilizada na fabricação de eixos, peças mecânicas e componentes industriais.\n\nIdeal para usinagem e fabricação mecânica\nAlta resistência e durabilidade\nExcelente acabamento para aplicações técnicas\nVersatilidade em diversos setores industriais\n\nMais eficiência e precisão para sua produção com materiais de qualidade.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "barras-laminadas.avif",
+            "text": "Barras Laminadas com robustez e desempenho para aplicações industriais\n\nAs barras laminadas são ideais para projetos que exigem resistência e custo-benefício, sendo amplamente utilizadas em estruturas metálicas e fabricação industrial.\n\nAlta resistência estrutural\nExcelente custo-benefício\nVersatilidade para diferentes aplicações\nIdeal para construção e indústria\n\nSolução eficiente para projetos que exigem força e confiabilidade.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "cantoneira.avif",
+            "text": "Cantoneira de aço com resistência e praticidade para estruturas metálicas\n\nA cantoneira é amplamente utilizada em reforços estruturais, suportes e montagens metálicas, oferecendo resistência e facilidade de aplicação.\n\nIdeal para estruturas e reforços\nAlta resistência mecânica\nFacilidade de montagem e soldagem\nVersatilidade em diversos projetos\n\nGaranta estabilidade e segurança com materiais confiáveis.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "ferrochato.avif",
+            "text": "Ferro Chato de aço com versatilidade para aplicações industriais e serralheria\n\nO ferro chato é ideal para fabricação de estruturas, suportes e componentes metálicos, oferecendo resistência e facilidade de trabalho.\n\nVersátil para diversas aplicações\nFácil corte, dobra e soldagem\nAlta resistência e durabilidade\nIdeal para serralheria e indústria\n\nMais praticidade e eficiência para o seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "perfilt.avif",
+            "text": ""
+        }
+    ],
+    "perfis": [
+        {
+            "image": "perfildobradoespecial.avif",
+            "text": "Perfil Dobrado Especial sob medida para projetos personalizados\n\nDesenvolvido conforme a necessidade do seu projeto, o perfil dobrado especial oferece precisão, versatilidade e adaptação total às aplicações industriais e estruturais mais exigentes.\n\nProdução sob medida conforme desenho técnico\nAlta precisão dimensional\nVersatilidade para diferentes aplicações\nRedução de etapas na fabricação\n\nTenha exatamente o perfil que seu projeto precisa, com qualidade e eficiência.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "perfilu.avif",
+            "text": "Perfil U de aço com resistência e versatilidade para estruturas metálicas\n\nO perfil U é amplamente utilizado em aplicações estruturais, oferecendo excelente suporte, estabilidade e facilidade de montagem.\n\nIdeal para estruturas e suportes\nAlta resistência mecânica\nFacilidade de instalação e soldagem\nVersatilidade para diferentes projetos\n\nSolução prática e eficiente para aplicações industriais e estruturais.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "perfiluenrijecido.avif",
+            "text": "Perfil U Enrijecido com maior resistência e desempenho estrutural\n\nProjetado para aplicações que exigem maior capacidade de carga, o perfil U enrijecido oferece reforço estrutural superior, garantindo segurança e durabilidade.\n\nMaior resistência e capacidade de carga\nIdeal para estruturas mais exigentes\nEstabilidade e desempenho superior\nAplicação em projetos industriais e estruturais\n\nMais segurança e robustez para projetos que não admitem falhas.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "perfis.avif",
+            "text": "Perfis de Aço para aplicações estruturais com qualidade e desempenho\n\nA Batisfer oferece uma linha completa de perfis de aço para atender diferentes necessidades industriais e estruturais. Com variedade de formatos e medidas, você encontra a solução ideal para cada projeto.\n\nPerfis U, U enrijecido e especiais sob medida\nAlta resistência e durabilidade\nVersatilidade para diferentes aplicações\nIdeal para estruturas metálicas e indústria\n\nSeja qual for o seu projeto, você encontra o perfil certo com qualidade e confiança.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "slitter": [
+        {
+            "image": "slitter.avif",
+            "text": "O processo de slitter permite o corte de bobinas de aço em tiras sob medida, garantindo precisão, padronização e eficiência para processos industriais. Na Batisfer, você conta com tecnologia e agilidade para atender demandas com qualidade e rapidez.\n\nCorte longitudinal sob medida conforme especificação\nAlta precisão e padronização das tiras\nRedução de desperdício de material\nMaior eficiência na produção industrial\n\nOtimize seus processos e receba o material pronto para uso. Com o serviço de slitter da Batisfer, você ganha produtividade, controle e qualidade em cada etapa.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "telhas": [
+        {
+            "image": "onduladas.avif",
+            "text": "Chapas Onduladas com resistência e eficiência para coberturas\n\nAs chapas onduladas são ideais para coberturas e fechamentos laterais, oferecendo resistência, leveza e excelente custo-benefício para diferentes tipos de construção.\n\nEstrutura leve e resistente\nFácil instalação\nExcelente custo-benefício\nIdeal para coberturas e fechamentos\n\nSolução prática e eficiente para obras que exigem rapidez e durabilidade.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "telhas.avif",
+            "text": "Telhas de Aço com durabilidade e proteção para sua cobertura\n\nAs telhas de aço são ideais para projetos que exigem resistência, proteção contra intempéries e longa vida útil, sendo amplamente utilizadas em construções industriais e comerciais.\n\nAlta resistência e durabilidade\nProteção contra chuva e sol\nBaixa manutenção\nIdeal para galpões e estruturas metálicas\n\nGaranta segurança e eficiência na cobertura do seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "trapezio25.avif",
+            "text": "Telha Trapézio 25 com leveza e versatilidade para coberturas\n\nA telha trapézio 25 é indicada para aplicações que exigem leveza, economia e facilidade de instalação, sendo ideal para coberturas e fechamentos leves.\n\nLeve e fácil de instalar\nExcelente custo-benefício\nIdeal para coberturas leves\nVersatilidade em aplicações\n\nMais praticidade e eficiência para o seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "trapezio40.avif",
+            "text": "Telha Trapézio 40 com maior resistência para estruturas exigentes\n\nA telha trapézio 40 oferece maior rigidez estrutural, sendo ideal para projetos que exigem maior resistência e vão livre maior, garantindo segurança e desempenho.\n\nMaior resistência estrutural\nIdeal para grandes vãos\nDurabilidade e segurança\nAplicação em estruturas industriais\n\nA escolha certa para coberturas que exigem desempenho superior.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "tubos": [
+        {
+            "image": "tubos.avif",
+            "text": "Tubos de Aço para aplicações estruturais com resistência e versatilidade\n\nA Batisfer oferece uma linha completa de tubos de aço para atender diferentes necessidades industriais e estruturais. Com variedade de formatos e medidas, você encontra a solução ideal para cada projeto.\n\nTubos redondos, quadrados e retangulares\nAlta resistência e durabilidade\nVersatilidade para diferentes aplicações\nIdeal para estruturas metálicas e indústria\n\nSeja qual for o seu projeto, você encontra o tubo certo com qualidade e confiança.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "tubosquadrados.avif",
+            "text": "Tubos Quadrados de aço com resistência e precisão para estruturas metálicas\n\nOs tubos quadrados são ideais para aplicações que exigem estabilidade e acabamento uniforme, sendo amplamente utilizados em estruturas metálicas e serralheria.\n\nExcelente resistência estrutural\nAcabamento uniforme\nFacilidade de corte e soldagem\nIdeal para estruturas e fabricação\n\nMais segurança e eficiência para o seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "tubosredondos.avif",
+            "text": "Tubos Redondos de aço com versatilidade para aplicações industriais\n\nOs tubos redondos são amplamente utilizados em condução, estruturas e fabricação, oferecendo resistência e excelente desempenho em diferentes aplicações.\n\nVersatilidade para diversos usos\nAlta resistência e durabilidade\nIdeal para condução e estruturas\nFacilidade de aplicação e fabricação\n\nSolução eficiente para diferentes necessidades industriais.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "tubosretangulares.avif",
+            "text": "Tubos Retangulares de aço com resistência e melhor aproveitamento estrutural\n\nOs tubos retangulares oferecem excelente distribuição de carga e são ideais para estruturas que exigem resistência com otimização de espaço e material.\n\nMelhor aproveitamento estrutural\nAlta resistência mecânica\nIdeal para estruturas metálicas\nVersatilidade em projetos industriais\n\nMais desempenho e eficiência para aplicações exigentes.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ],
+    "vigas": [
+        {
+            "image": "viga I.avif",
+            "text": "A viga I é amplamente utilizada em construções e estruturas metálicas, oferecendo excelente capacidade de carga e desempenho estrutural.\n\nAlta resistência e capacidade de carga\nIdeal para estruturas metálicas\nExcelente desempenho em grandes vãos\nAplicação em obras industriais e comerciais\n\nMais segurança e estabilidade para o seu projeto.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "viga u.avif",
+            "text": "A viga U é ideal para suportes, reforços e estruturas metálicas, oferecendo resistência e facilidade de aplicação em diferentes projetos.\n\nVersatilidade em aplicações estruturais\nAlta resistência mecânica\nFacilidade de instalação e montagem\nIdeal para suportes e reforços\n\nSolução prática e eficiente para estruturas metálicas.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "viga w.avif",
+            "text": "Viga W de aço com máxima robustez para grandes estruturas\n\nA viga W (wide flange) é indicada para projetos que exigem alta capacidade de carga e desempenho estrutural superior, sendo ideal para grandes construções e estruturas industriais.\n\nAlta capacidade de carga\nIdeal para grandes vãos e estruturas robustas\nExcelente desempenho estrutural\nAplicação em obras industriais e de grande porte\n\nA escolha certa para projetos que exigem máxima resistência e confiabilidade.\n\nSolicite um orçamento agora e fale com um especialista."
+        },
+        {
+            "image": "vigas.avif",
+            "text": "Vigas de Aço para estruturas com máxima resistência e segurança\n\nA Batisfer oferece uma linha completa de vigas de aço para aplicações estruturais, garantindo resistência, durabilidade e desempenho em projetos de pequeno a grande porte.\n\nVigas I, U e W para diferentes aplicações\nAlta resistência estrutural\nIdeal para construção metálica e industrial\nQualidade e confiabilidade para projetos exigentes\n\nGaranta a base estrutural do seu projeto com materiais que entregam segurança e desempenho.\n\nSolicite um orçamento agora e fale com um especialista."
+        }
+    ]
+};
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoria = urlParams.get('categoria');
+
+        const titleEl = document.getElementById('galleryTitle');
+        const gridEl = document.getElementById('galleryGrid');
+
+        function formatText(rawText) {
+            if (!rawText) return '<p class="prod-card-desc">Detalhes técnicos deste produto estarão disponíveis em breve.</p>';
+            
+            const parts = rawText.split(/\n\s*\n/);
+            let contentHtml = '';
+            
+            if (parts.length > 0) {
+                contentHtml += '<h3 class="prod-card-title">' + parts[0] + '</h3>';
+            }
+            if (parts.length > 1) {
+                contentHtml += '<p class="prod-card-desc">' + parts[1] + '</p>';
+            }
+            if (parts.length > 2) {
+                const listItems = parts[2].split('\n').filter(l => l.trim().length > 0).map(l => '<li>' + l + '</li>').join('');
+                contentHtml += '<ul class="prod-card-list">' + listItems + '</ul>';
+            }
+            if (parts.length > 3) {
+                contentHtml += '<p class="prod-card-conc">' + parts[3] + '</p>';
+            }
+            return contentHtml;
+        }
+
+        if (categoria && imageDB[categoria]) {
+            titleEl.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+            
+            const itens = imageDB[categoria];
+            let listHtml = '';
+            
+            itens.forEach(item => {
+                const altText = item.image.split('.')[0].replace(/-/g, ' ').trim();
+                const contentHtml = formatText(item.text);
+                
+                let encodedImg = encodeURIComponent(item.image);
+                
+                listHtml += `
+                <article class="gallery-item">
+                    <div class="gallery-img-wrapper">
+                        <img src="imagens/${categoria}/${encodedImg}" alt="${altText}" loading="lazy">
+                    </div>
+                    <div class="gallery-content">
+                        ${contentHtml}
+                        <a href="index.html#contato" class="btn-primary gallery-btn">Solicitar Cotação <span class="arrow">→</span></a>
+                    </div>
+                </article>
+                `;
+            });
+            
+            gridEl.innerHTML = listHtml;
+        } else {
+            titleEl.textContent = "Categoria não encontrada";
+            gridEl.innerHTML = "<p>Nenhuma imagem ou descritivo disponível para a categoria selecionada.</p>";
+        }
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
