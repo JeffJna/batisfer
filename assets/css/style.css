@@ -774,7 +774,8 @@ section {
 
 .prod-img-wrapper {
     position: relative;
-    min-height: 270px;
+    aspect-ratio: 16 / 11;
+    width: 100%;
     overflow: hidden;
 }
 
